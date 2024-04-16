@@ -1,0 +1,222 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Correction de Texte</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Oswald:wght@300&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesecond.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <nav class="navbar bg-primary justify-content-between">
+        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1012,h=233,fit=crop/mP4No6gyxPuVqkRL/logo-solution-e-learning-noir-YZ9Xqxg4w5SEoJo8.png"  class="logo-style">
+        <a class="navbar-brand rubikStyle" style="color :white ; margin-left : 2% ; font-size: 32px;">Correcteur IA</a>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal"
+            style="align-items: center ; margin-top: 0; margin-right : 2% ;text-decoration: underline;">
+            Mode d'emploi
+        </button>
+    </nav>
+    <div id="secondNavbarContainer">
+        <ul id="secondNavbar">
+            <li>Tuteur IA</li>
+            <li>Correcteur IA</li>
+            <li>Safe IA</li>
+            <li>Assistant IA</li>
+        </ul>
+    </div>
+    <section class="main-content">
+        <h2 id="first-title">Bonjour, bienvenue sur Correcteur AI</h2>
+        <!-- correction.html -->
+        <div class="depot-texte">
+            <div class="depot-document">
+                <form id="uploadForm" enctype="multipart/form-data">
+                    <label for="fileUpload" id="depot-fichier">
+                        <span class="important-line important-title">Pour déposer un texte...</span> <br>
+                        <span class="text-cursor">Placez-le dans la fenêtre</span><br>
+                        <span class="important-line">OU</span><br>
+                        <span class="text-cursor">Uploadez un fichier texte avec le bouton en-dessous, puis transférez-le avec le second.</span>
+                    </label>
+                    <br>
+                    <button type="button" id="startButton" class="btn btn-grey" onclick="document.getElementById('fileUpload').click()">Commencer</button>
+                    <span id="file-chosen">Aucun fichier choisi</span>
+                    <input type="file" id="fileUpload" name="fileUpload" accept=".txt, .text, .md" style="display: none;" onchange="updateFileName()">
+                    <br>
+                    <button type="button" id="transferTextButton" class="btn btn-orange">Transférer le texte <i class="bi bi-file-text"></i>
+                    </button>
+                </form>
+            </div>
+
+            <div class="editable-textarea-container">
+                <form action="/corrector" method="post" enctype="multipart/form-data">
+                    <div id="editable-textarea" contenteditable="true" class="editable-textarea"
+                        placeholder="Entrez votre texte à corriger ici"></div>
+                    <input type="hidden" id="text-content" name="text_content" value="">
+                    <button type="submit" class="btn btn-orange btn-lg button-correction">CORRIGER <i class="bi bi-pencil-square"></i></button>
+
+
+
+
+                </form>
+            </div>
+        </div>
+        <div id="result"></div> <!-- Div pour afficher le texte corrigé et les erreurs -->
+    </section>
+    <!-- Modal -->
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Mode d'emploi</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    Rentrer votre texte à corriger et appuyer sur le bouton "corriger".
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fermer</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+        <!-- Modal de Chargement avec style amélioré -->
+    <div class="modal" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="loadingModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loadingModalLabel">Patientez s'il vous plaît...</h5>
+                </div>
+
+                <!-- Modal Body avec message et spinner de Chargement -->
+                <div class="modal-body text-center">
+                    <h6>Nous préparons votre correction.</h6>
+                    <div class="spinner-grow text-primary" role="status" style="width: 3rem; height: 3rem;">
+                        <span class="visually-hidden">Chargement...</span>
+                    </div>
+                    <p class="mt-3">Cela ne devrait pas prendre longtemps.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+
+document.querySelector('form').addEventListener('submit', function(e) {
+    var text = document.querySelector('#editable-textarea').innerText;
+    document.querySelector('#text-content').value = text;
+    console.log(text);
+});
+
+var editableArea = document.getElementById('editable-textarea');
+
+// Empêcher le comportement par défaut pour le drag & drop
+['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+    editableArea.addEventListener(eventName, preventDefaults, false);
+});
+
+function preventDefaults(e) {
+    e.preventDefault();
+    e.stopPropagation();
+}
+
+// Gérer le drop
+editableArea.addEventListener('drop', handleDrop, false);
+
+function handleDrop(e) {
+    var dt = e.dataTransfer;
+    var files = dt.files;
+
+    // Appeler la fonction de lecture de fichier pour le premier fichier seulement
+    if (files.length > 0) {
+        readFile(files[0]);
+    }
+}
+
+function readFile(file) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+        editableArea.textContent = e.target.result;
+    };
+    reader.readAsText(file);
+}
+
+document.querySelector('form[action="/corrector"]').addEventListener('submit', function(e) {
+    var text = document.querySelector('#editable-textarea').innerText;
+    document.querySelector('#text-content').value = text;
+});
+
+
+document.querySelector('form[action="/corrector"]').addEventListener('submit', function(e) {
+    // Affichez le modal de chargement
+    var loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'), {
+        backdrop: 'static',
+        keyboard: false
+    });
+    loadingModal.show();
+
+    // Copiez le texte de la zone éditable dans le champ caché
+    var text = document.querySelector('#editable-textarea').innerText;
+    document.querySelector('#text-content').value = text;
+});
+
+document.querySelector('form[action="/corrector"]').addEventListener('submit', function(e) {
+    // Affichez le modal de chargement
+    var loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'), {
+        backdrop: 'static',
+        keyboard: false
+    });
+    loadingModal.show();
+
+    // Copiez le texte de la zone éditable dans le champ caché
+    var text = document.querySelector('#editable-textarea').innerText;
+    document.querySelector('#text-content').value = text;
+});
+
+function updateFileName() {
+    var fileInput = document.getElementById('fileUpload');
+    var filePath = fileInput.value;
+    if (filePath) {
+        var fileName = filePath.split('\\').pop();
+        document.getElementById('file-chosen').textContent = fileName;
+    }
+}
+
+    </script>
+
+
+
+
+</body>
+
+</html>

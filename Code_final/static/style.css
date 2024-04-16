@@ -1,0 +1,470 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+.navbar {
+    background-color: #007bff;
+    width : 100%;
+    color: #fff;
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+}
+
+.navright{
+    font-size: 20px;
+    padding-right: 20px;
+    text-decoration: underline;
+}
+
+.navleft {
+    margin: 0;
+    font-size: 32px;
+    padding-left: 20px;
+}
+
+.button_how{
+    align-items: center;
+    background-color: #007bff;
+    text-decoration: underline ;
+    border : none;
+}
+
+.button_how:hover{
+    align-items: center;
+    background-color: #4da8ff;
+}
+
+#errorPopup {
+    border: 0.5px solid grey;
+    box-shadow: 2px 2px 7px grey;      }
+
+.btn-popup {
+    margin-bottom: 35px;
+    padding-top: 0px;
+    line-height: normal;
+}
+
+.faute-titre {
+    font-size: 20px;
+}
+
+.little-green-cube {
+    display: inline-block;
+    width: 15px;
+    height: 12px;
+    background-color: #198754;
+    border-radius: 3px;
+  }
+  
+  .little-blue-cube {
+    display: inline-block;
+    width: 15px;
+    height: 12px;
+    background-color: #0d6efd;
+    border-radius: 3px;
+  }
+  
+  .little-red-cube {
+    display: inline-block;
+    width: 15px;
+    height: 12px;
+    background-color: #dc3545;
+    border-radius: 3px;
+  }
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1050; /* Assure que le header reste au-dessus du drawer */
+  }
+  
+
+.offcanvas-start {
+    margin-top: 60px; /* Ajustez à la hauteur de votre header */
+}
+
+.offcanvas-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
+
+
+.main-content {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.main-content2{
+    text-align: center;
+    width : 100vw;
+}
+
+#first-title {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-size: 3em;
+    color: black;
+    font-family: "Kanit", sans-serif;
+    font-weight: 400;
+}
+
+
+h3 {
+    margin-bottom: 10px;
+    margin-right: 10px;
+    font-size: 18px;
+    color: black;
+    font-weight: normal;
+    /*Moins gras*/
+}
+
+.zone {
+    width : 100%;
+    color: black;
+    padding-top : 10px;
+    padding: 1%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/* .editable-textarea{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+} */
+
+/*Style du bouton*/
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    /* Adjust the margin as needed */
+}
+
+.btn-container {
+    text-align: center;
+    justify-content: center;
+}
+
+/*Style bouton quand il la souris passe dessus*/
+.btn:hover {
+    background-color: #4da8ff
+}
+
+.button-correction {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    width: 10em;
+}
+
+footer {
+    background-color: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+
+/*Style d'erreur*/
+.error {
+    background-color: #ffcccc;
+    /* Couleur de fond pour la surbrillance */
+    padding: 2px;
+    /* Ajoutez un peu d'espace autour du mot surbrillant */
+    border-radius: 3px;
+    /* Bords arrondis pour un aspect plus esthétique */
+    cursor: pointer;
+    /* Change le curseur pour indiquer qu'il est cliquable */
+}
+
+/*Style des fen^tre de pop-up*/
+.popup {
+    position: absolute;
+    display: none;
+    border: 1px solid #000;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    z-index: 10;
+    width: auto;
+    height: auto;
+}
+
+/*Style de la croix pour fermer la fênetre de pop-up*/
+.close {
+    float: right;
+    cursor: pointer;
+}
+
+.depot-texte {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: start;
+}
+
+.depot-document {
+    flex: 1;
+    background-color: #e4e4e4;
+    border-radius: 3%;
+    padding: 5px 10px;
+    line-height: 3em;
+    font-size: 1.1em;
+    margin-right: 2%;
+    margin-left: 2%;
+    margin-top: 50px;
+
+}
+
+.editable-textarea-container {
+    flex: 3;
+}
+
+
+.editable-textarea {
+    text-align: left;
+    border: 2px solid #ccc;
+    margin: 2% 5% 1% 3%;
+    box-sizing: border-box;
+    height: 30vw;
+    overflow-y: auto; /* Only allow vertical scrolling */
+    overflow-x: hidden; /* Hide horizontal overflow */
+    white-space: normal; /* Allows text to wrap to new lines */
+    color: #555859;
+}
+
+#depot-fichier, #fileUpload:hover {
+    cursor: pointer;
+}
+
+.important-title {
+    font-size: 1.3em;
+}
+
+.depot-document:hover {
+    background-color: #c7c7c7;
+    cursor: pointer;
+}
+
+.important-line {
+    font-weight: bold;
+}
+
+.editable-textarea2 {
+    text-align: left;
+    flex: 1;
+    border: 1px solid #ccc;
+    margin-left: 5%;
+    margin-right: 5%;
+    box-sizing: border-box;
+    height: 39vw;
+    overflow-y: auto; /* Only allow vertical scrolling */
+    overflow-x: hidden; /* Hide horizontal overflow */
+    white-space: normal; /* Allows text to wrap to new lines */
+}
+
+
+.penalty-container {
+    display: flex;
+    align-items: right;
+    /* Align items vertically in the center */
+    justify-content: center;
+    /* Align items horizontally in the center */
+    margin-top : 20px;
+    margin-bottom: 20px;
+}
+
+.button-container {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    /* Adjust the margin as needed */
+}
+
+.button-container:hover {
+    background-color: #4da8ff
+}
+
+#banniere {
+    width : 30%;
+    min-width: 250px;
+    padding-top: 10px;
+    margin-right: 0.8em;
+    top: 50%; /* Positionnement vertical */
+    right: 0; /* Positionnement sur la droite */
+    background-color: #f0f0f0; /* Couleur de fond de la bannière */
+    padding: 10px; /* Espacement intérieur de la bannière */
+    text-align: center; /* Centrer le contenu horizontalement */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ombre légère */
+    display: block;
+}
+.content{
+    text-align: left;
+}
+.btn2 {
+    position: fixed; /* Fixe le bouton par rapport à la fenêtre du navigateur */
+    bottom: 20px; /* Définit une marge de 20px depuis le haut de la fenêtre du navigateur */
+    left: 50%; /* Positionne le bouton au centre horizontalement */
+    transform: translateX(-50%); /* Décale le bouton de moitié de sa propre largeur vers la gauche pour le centrer */
+    padding: 10px 20px; /* Espacement intérieur du bouton */
+    background-color: #007bff; /* Couleur de fond du bouton */
+    color: #fff; /* Couleur du texte */
+    text-align: center; /* Centrer le texte horizontalement */
+    text-decoration: none; /* Supprime le soulignement par défaut des liens */
+    border: none; /* Supprime la bordure */
+    border-radius: 5px; /* Arrondi des coins */
+    cursor: pointer; /* Curseur de type pointer pour indiquer qu'il s'agit d'un élément cliquable */
+    transition: background-color 0.3s ease; /* Transition fluide pour le changement de couleur de fond */
+}
+
+.btn2:hover {
+    background-color: #0056b3; /* Changement de couleur de fond au survol */
+}
+
+.popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+}
+
+.btn-toggle-offcanvas {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background-color: #007bff;
+    color: #fff;
+    width: 2vw;
+    min-width: 40px; /* Assure une largeur minimale pour les petits écrans */
+    padding: 10px; /* Ajoute un peu de padding pour rendre le bouton plus cliquable */
+    cursor: pointer; /* Change le curseur au survol du bouton */
+}
+  
+.arrow-icon {
+    display: inline-block;
+    color: white;
+  }
+
+#invisiblebutton {
+    display: none;
+}
+
+
+.paragraphe {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.editable-textarea.empty:before {
+    content: attr(data-placeholder);
+    color: grey;
+    pointer-events: none;
+  }
+
+.correction-autre {
+    margin-top: 2em;
+}
+  
+  @media only screen and (min-width: 0px) and (max-width:767px) {
+
+    #invisiblebutton {
+        display: initial;
+        background-color: #0D6EFD; /* Couleur de fond du bouton primaire Bootstrap */
+        color: #FFFFFF; /* Couleur du texte du bouton primaire Bootstrap */
+        border: 1px solid #0D6EFD; /* Bordure du bouton primaire Bootstrap */
+        border-radius: 0.3rem;
+        min-width: 2em;
+        min-height: 2em;
+        padding: 2px 5px;
+        transition: background-color 0.3s ease;
+        margin-top: 2em;
+        margin-bottom: 1em;
+        }
+    
+    #invisiblebutton:hover {
+        background-color: #0B5ED7;
+        border: 1px solid #0B5ED7;
+        transition: background-color 0.3s ease;
+    }
+
+    .zone {
+        flex-direction: column;
+    }
+
+    #banniere {
+        min-width: 85%;
+    }
+
+    .depot-texte {
+        display: initial;
+    }
+
+    .depot-document {
+        max-width: 55%;
+        margin: 1.5em 0;
+        max-height: 30%;
+        min-height: 0;
+        flex:3;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1em;
+        font-size: 1em;
+    }
+
+    .editable-textarea {
+        width: 80%;
+        height: 300px;
+        flex: 3;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 1em;
+    }
+}
+
+.btn-bd-primary {
+    --bs-btn-font-weight: 600;
+    --bs-btn-color: var(--bs-white);
+    --bs-btn-bg: var(--bd-violet);
+    --bs-btn-border-color: var(--bd-violet);
+    --bs-btn-border-radius: .5rem;
+    --bs-btn-hover-color: var(--bs-white);
+    --bs-btn-hover-bg: #{shade-color($bd-violet, 10%)};
+    --bs-btn-hover-border-color: #{shade-color($bd-violet, 10%)};
+    --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+    --bs-btn-active-color: var(--bs-btn-hover-color);
+    --bs-btn-active-bg: #{shade-color($bd-violet, 20%)};
+    --bs-btn-active-border-color: #{shade-color($bd-violet, 20%)};
+  }
+  
+#progress_bar_grammaire.bg-danger {
+    background-color: green; /* Custom orange color */
+}

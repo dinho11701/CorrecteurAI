@@ -1,0 +1,126 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Correction de Texte</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Oswald:wght@300&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar  bg-primary justify-content-between">
+        <a class="navbar-brand" style="color :white ; margin-left : 2% ; font-size: 32px;">Correcteur AI</a>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal"
+            style="align-items: center ; margin-top: 0; margin-right : 2% ;text-decoration: underline;">
+            Mode d'emploi
+        </button>
+    </nav>
+    <section class="main-content">
+        <h2 id="first-title">Bonjour, bienvenue sur Correcteur AI</h2>
+        <!-- correction.html -->
+        <div class="depot-texte">
+            <div class="depot-document">
+                <form id="uploadForm" enctype="multipart/form-data">
+                    <label for="fileUpload" id="depot-fichier">
+                        <span class="important-line important-title">Pour déposer un texte...</span> <br>
+                        <span class="text-cursor">Placez-le dans la fenêtre</span><br>
+                        <span class="important-line">OU</span><br>
+                        <span class="text-cursor">Uploadez un fichier texte avec le bouton en-dessous</span>
+                    </label>
+                    <input type="file" id="fileUpload" name="fileUpload" accept=".txt, .text, .md">
+                    <br>
+                    <input type="submit" id="transferTextButton" class="btn btn-primary" value="Transférer le texte">
+                </form>
+            </div>
+
+            <div class="editable-textarea-container">
+                <form action="/corrector" method="post" enctype="multipart/form-data">
+                    <div id="editable-textarea" contenteditable="true" class="editable-textarea"
+                        placeholder="Entrez votre texte à corriger ici"></div>
+                    <input type="hidden" id="text-content" name="text_content" value="">
+                    <button type="submit" class="btn btn-primary btn-lg button-correction">CORRIGER</button>
+                </form>
+            </div>
+        </div>
+        <div id="result"></div> <!-- Div pour afficher le texte corrigé et les erreurs -->
+    </section>
+    <!-- Modal -->
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Mode d'emploi</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    Rentrer votre texte à corriger et appuyer sur le bouton "corriger".
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fermer</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        document.querySelector('form').addEventListener('submit', function(e) {
+            var text = document.querySelector('#editable-textarea').innerText;
+            document.querySelector('#text-content').value = text;
+        });
+    </script>
+    <script>
+        var editableArea = document.getElementById('editable-textarea');
+    
+        // Empêcher le comportement par défaut pour le drag & drop
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            editableArea.addEventListener(eventName, preventDefaults, false);
+        });
+    
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+    
+        // Gérer le drop
+        editableArea.addEventListener('drop', handleDrop, false);
+    
+        function handleDrop(e) {
+            var dt = e.dataTransfer;
+            var files = dt.files;
+    
+            // Appeler la fonction de lecture de fichier pour le premier fichier seulement
+            if (files.length > 0) {
+                readFile(files[0]);
+            }
+        }
+    
+        function readFile(file) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                editableArea.textContent = e.target.result;
+            };
+            reader.readAsText(file);
+        }
+    </script>
+    
+</body>
+
+</html>

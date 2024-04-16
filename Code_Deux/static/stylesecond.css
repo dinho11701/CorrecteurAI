@@ -1,0 +1,74 @@
+body {
+    background-color: #f3f3f3;
+}
+
+.rubikStyle, #first-title, #titleCorrection, .penalité, #titleCorrection1, .paragraphe, #totalPenalty, form {
+font-family: 'Rubik', sans-serif;}
+
+.turquoise-color {
+    color: #00c2d1; /* Cette couleur est le turquoise que vous avez spécifié */
+}
+
+/* Assurez-vous que la couleur orange s'applique aussi lors du survol */
+.btn-orange:hover {
+    background-color: #e69514; /* Un orange légèrement plus foncé pour le survol */
+    border-color: #e69514;
+}
+
+/* Changer la couleur de fond de la barre de navigation en turquoise */
+.navbar.bg-primary {
+    background-color: #00c2d1 !important; /* Turquoise spécifié */
+}
+
+/* Changer la couleur de fond des boutons .btn-primary en turquoise */
+.btn-primary {
+    background-color: #00c2d1 !important; /* Turquoise */
+    border-color: #00c2d1 !important; /* Turquoise pour la bordure du bouton */
+}
+
+.btn-orange {
+    background-color: #f0a514; /* Couleur de fond orange */
+    border-color: #f0a514; /* Couleur de la bordure */
+    color: white; /* Couleur du texte */
+    border-radius: 50px;
+}
+
+.btn-orange:hover {
+    background-color: darken(#f0a514, 10%); /* Assombrir un peu la couleur au survol */
+}
+
+/* Changer la couleur de fond de la barre de navigation en turquoise */
+.navbar.bg-primary {
+    background-color: #00c2d1 !important; /* Couleur turquoise spécifiée */
+}
+
+#secondNavbar {
+    display: flex;
+    list-style-type: none;
+}
+
+#secondNavbar > li {
+    background-color: white;
+    padding: 0.55em 1.5em;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 600;
+    color: #58595b;
+    margin: 0px 3px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+#secondNavbar > li:hover {
+    color: #00c2d1;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+/* style Rubik */
+body {
+    font-family: 'Rubik', sans-serif;
+}
+
+#editable-textarea {
+    background-color: white;
+}
